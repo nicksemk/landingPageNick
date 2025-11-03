@@ -41,7 +41,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     submitBtn.disabled = false;
     //console.log("✅ Processo completo - Formulário seria enviado!");
   }, 3000);
-  this.reset();
+ // this.reset();
 });
 
 // Smooth scroll para âncoras
