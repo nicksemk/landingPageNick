@@ -55,7 +55,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
              //alert("Mensagem enviada com sucesso!");
              this.reset();
         } else {
-           // alert("Erro ao enviar a mensagem. Por favor, tente novamente.");
+            alert("Erro ao enviar a mensagem. Por favor, tente novamente.");
         }
     })
     .catch(error => {
