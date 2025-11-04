@@ -25,7 +25,7 @@ window.addEventListener("scroll", () => {
 
 // Form submission
 document.getElementById("contactForm").addEventListener("submit", function (e) {
-  //e.preventDefault();
+  e.preventDefault();
 
   const submitBtn = this.querySelector('button[type="submit"]');
   const originalText = submitBtn.textContent;
@@ -36,13 +36,50 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   //console.log("📋 Dados do formulário:", Object.fromEntries(formData));
   //console.log("📧 EMAIL QUE RECEBERIA:", "pietronicollas34conta2@gmail.com");
 
-  setTimeout(() => {
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("✅ Sucesso:", data);
+        if (data.success) {
+            const modal = document.querySelector("dialog");
+        if (modal) {
+            modal.showModal();
+            const closeBtn = modal.querySelector(".closeModal");
+            closeBtn.addEventListener("click", () => {
+                modal.close();
+            });
+        }
+             //alert("Mensagem enviada com sucesso!");
+             this.reset();
+        } else {
+           // alert("Erro ao enviar a mensagem. Por favor, tente novamente.");
+        }
+    })
+    .catch(error => {
+        console.error("❌ Erro:", error);
+        alert("Ocorreu um erro ao enviar a mensagem. ");
+    })
+    .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+    });
+});
+
+    
+
+
+
+  /*setTimeout(() => {
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
     //console.log("✅ Processo completo - Formulário seria enviado!");
   }, 3000);
- // this.reset();
-});
+ // this.reset();*/
+
 
 // Smooth scroll para âncoras
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
