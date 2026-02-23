@@ -33,8 +33,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   submitBtn.disabled = true;
 
   const formData = new FormData(this);
-  //console.log("📋 Dados do formulário:", Object.fromEntries(formData));
-  //console.log("📧 EMAIL QUE RECEBERIA:", "pietronicollas34conta2@gmail.com");
+  //console.log(" Dados do formulário:", Object.fromEntries(formData));
+  //console.log(" EMAIL QUE RECEBERIA:", "pietronicollas34conta2@gmail.com");
 
     fetch(this.action, {
         method: 'POST',
